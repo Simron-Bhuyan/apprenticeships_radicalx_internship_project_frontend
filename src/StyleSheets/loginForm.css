@@ -1,0 +1,102 @@
+.logo {
+  /* background-color: red; */
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
+
+.container {
+  display: flex;
+}
+
+.subContainer1 {
+  width: 50%;
+  height: 100vh;
+  background-color: var(--color_purple);
+}
+
+.subContainer2 {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+  position: relative;
+  background-color: white;
+}
+
+.form {
+  width: 50%;
+  --icon-color: #8a8b8c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  gap: 1rem;
+}
+
+.form .title {
+  text-align: start;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.form .loginBtn {
+  padding: 0.625rem 1rem;
+  border-radius: 1rem;
+  background-color: var(--color_purple);
+  font-size: 1rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.emailBox,
+.passwordBox {
+  display: flex;
+  align-items: center;
+  background-color: var(--color_secondary);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--color_field_stroke);
+  border-radius: 1rem;
+}
+
+.emailBox > input,
+.passwordBox > input {
+  flex-grow: 1;
+}
+
+.passwordBox {
+}
+
+.emailBox > input,
+.passwordBox > input {
+  border: none;
+  background-color: var(--color_secondary);
+  outline: none;
+}
+
+.forgotPassword .rememberMe,
+.forgotPassword {
+  display: flex;
+  align-items: center;
+}
+
+.forgotPassword .rememberMe {
+  gap: 0.5rem;
+}
+
+.forgotPassword {
+  justify-content: space-between;
+}
+
+#remember_me_checkbox {
+  /* transform: scale(1.3); */
+  cursor: pointer;
+}
+
+.forgotPassword .text {
+  color: #793ef5;
+  cursor: pointer;
+}

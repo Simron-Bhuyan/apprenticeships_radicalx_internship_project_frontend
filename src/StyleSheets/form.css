@@ -1,0 +1,112 @@
+.form_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+.form_header .form_header_title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.form_header .back {
+  font-size: 1.125rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.5rem;
+}
+
+.form_header .publish_apprenticeship_btn {
+  font-size: 0.875rem;
+  background-color: var(--color_gray_50);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 1rem;
+  color: var(--color_gray_3);
+}
+
+.form_progress_indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d0d4da;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+}
+
+.form_progress_indicator .indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.form_progress_indicator .indicator > input {
+}
+
+.form {
+  width: 53.5%;
+}
+
+/* Form Fields CSS */
+
+.title_field::placeholder {
+  color: var(--color_dark);
+  opacity: 0.3;
+}
+
+.field_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  gap: 1rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+}
+
+.field_header {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_field {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#logo_and_title_field .form_field .logo_field {
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+  background-color: var(--color_gray_50);
+  border-radius: 1.25rem;
+}
+
+.logo_field #image_icon {
+  position: absolute;
+  top: 3.8125rem;
+  left: 3.8125rem;
+}
+
+#logo_and_title_field .form_field .title_field {
+  font-size: 1.5rem;
+  flex-grow: 1;
+}
+
+#company_description_field .form_field .title_field {
+  font-size: 1.125rem;
+  flex-grow: 1;
+}

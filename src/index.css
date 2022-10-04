@@ -1,0 +1,53 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  min-height: 100vh;
+  background-color: #f1f4f8;
+}
+
+input {
+  font-family: "Space Grotesk", sans-serif;
+  border: none;
+  outline: none;
+  /* background: none; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Utility Classes */
+.display_none {
+  display: none !important;
+}
+
+.purple_color {
+  color: var(--color_purple) !important;
+  opacity: 1 !important;
+}
+
+.fade {
+  color: var(--color_dark);
+  opacity: 0.3;
+}
+
+.g-2 {
+  gap: 2rem;
+}
