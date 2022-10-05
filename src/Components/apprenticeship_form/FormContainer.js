@@ -3,6 +3,7 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import ImageIcon from "./icons/ImageIcon";
 import "../../StyleSheets/form.css";
@@ -113,6 +114,22 @@ function FormContainer() {
             />
           </div>
         </div>
+
+        {/* Role Field*/}
+        <div id="company_description_field" className="field_role field_container">
+        <div className="field_header">
+          Team Roles
+          
+        </div>
+        <div className="add_member">
+          <button ><AddCircleOutlineIcon style={{padding:"2px"}}/><div>Add Team Member</div></button>
+        </div>
+        <div id="role-error">
+        <ErrorOutlineRoundedIcon  style={{color: "#A6ABBB",
+        }} />
+        </div>
+        
+      </div>
       </div>
     </div>
   );
