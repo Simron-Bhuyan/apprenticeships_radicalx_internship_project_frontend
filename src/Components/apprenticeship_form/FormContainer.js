@@ -5,20 +5,26 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
-import InputAdornment from '@mui/material/InputAdornment';
-import Input from '@mui/material/Input';
+import Checkbox from '@mui/material/Checkbox';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import ImageIcon from "./icons/ImageIcon";
 import Modal from "./RoleModal/Modal"
 
 
 import "../../StyleSheets/form.css";
-
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 function FormContainer() {
   const [show, setShow] = useState(false);
+  const [skill, setSkill] = useState(false);
   return (
     <div className="formContainer">
       {/* Form Header  */}
@@ -141,7 +147,8 @@ function FormContainer() {
                   id="combo-box-demo"
                   sx={{
                     ' &.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      border: 'none',
+                      border: 'none'
+                      ,
                     },
                   }}
                   style={{
@@ -151,7 +158,7 @@ function FormContainer() {
                   options={searchRoles}
                   renderInput={(params) => <TextField fullWidth
 
-                    style={{ borderColor: "transparent", background: "none", border: "1px solid #665FEF", borderRadius: "12px", alignSelf: "stretch", position: "absolute", }}
+                    style={{ borderColor: "transparent", background: "none", border: "1px solid #665FEF", borderRadius: "12px", alignSelf: "stretch", position: "absolute", caretColor: "transparent", paddingLeft: "45px" }}
                     placeholder="Select Role"
                     {...params} label="" />}
                 />
@@ -163,6 +170,49 @@ function FormContainer() {
                   placeholder="Describe the responsibilities"
                 />
               </div>
+              <div className="roledesc req-skills">Required Skills (Select any 3)</div>
+              <div><button className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
+                <WorkspacePremiumOutlinedIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+                />
+                <div className="skills-text">Select Skills</div>
+                <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+              </button></div>
+              {/* <Autocomplete
+                multiple
+                id="checkboxes-tags-demo"
+                options={languages}
+                disableCloseOnSelect
+                getOptionLabel={(option) => option.title}
+                renderOption={(props, option, { selected }) => (
+                  <li {...props}>
+                    <Checkbox
+                      icon={icon}
+                      checkedIcon={checkedIcon}
+                      style={{ marginRight: 8 }}
+                      checked={selected}
+                    />
+                    {option.title}
+                  </li>
+                )}
+                style={{ width: 500 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+                )}
+                />*/}
+              <div className="roledesc req-skills">Complementary Skills (Select any 3)</div>
+              <div className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
+                <StarBorderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+                />
+                <input className="skills-text" />
+                <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+              </div>
+              <div className="roledesc req-skills">Minimum Hours Per Week</div>
+
+              <div className="Skills-select " onClick={() => { setSkill(skill => !skill) }}>
+                <QueryBuilderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+                />
+                <input type="number" disablePortal />
+              </div>
             </Modal></form>
           </div>
           <div id="role-error">
@@ -172,10 +222,13 @@ function FormContainer() {
           </div>
 
         </div>
+
+
       </div>
     </div>
   );
 }
 const searchRoles = ['iOS Developer', 'Android Developer', 'Full Stack Developer', 'Back-end Developer', 'Front-end Developer', ''];
+const languages = ['Swift', 'Java', 'Python', 'JavaScript', 'Reactjs'];
 export default FormContainer;
 
