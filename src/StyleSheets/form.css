@@ -171,7 +171,7 @@
     width: auto;
     height: 24px;
     font-size: 16px;
-    
+
 }
 
 /*Role Description*/
@@ -188,7 +188,6 @@
 }
 
 .role-field {
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -197,14 +196,11 @@
     width: 552px;
     min-height: 195px;
     /* Snow */
-
     background: #FFFFFF;
     /* Purple */
     border: 1px solid #793EF5;
     border-radius: 12px;
-
 }
-
 
 .role-field textarea {
     position: absolute;
@@ -219,36 +215,26 @@
     -moz-box-shadow: none;
     box-shadow: none;
     border: none;
-
 }
 
 /*Required skills*/
-.req-skills{
-width:max-content;
+.req-skills {
+    width: max-content;
 }
 /*Skills selection*/
 
-.Skills-select{
-    position:relative;
-    width:552px;
+.Skills-select {
+    position: relative;
+    width: 552px;
     height: 48px;
     display: flex;
-flex-direction: row;
-/* align-items: flex-start; */
-/* padding: 12px 12px 12px 16px; */
-background: #FFFFFF;
-/* Purple */
-
-border: 1px solid #793EF5;
-border-radius: 12px;
-
-/* Inside auto layout */
-
-flex: none;
-order: 1;
-flex-grow: 0;
+    flex-direction: row;
+    background: #FFFFFF;
+    /* Purple */
+    border: 1px solid #793EF5;
+    border-radius: 12px;
 }
-.skills-text{
+.skills-text {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -256,12 +242,8 @@ flex-grow: 0;
     font-size: 16px;
     line-height: 24px;
     /* identical to box height, or 150% */
-    
-   
     letter-spacing: 0.3px;
     font-feature-settings: 'liga' off;
-    
     color: #1E1E1E;
-    
-    opacity: 0.3;    
+    opacity: 0.3;
 }
