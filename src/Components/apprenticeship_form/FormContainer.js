@@ -14,8 +14,10 @@ import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOu
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import ImageIcon from "./icons/ImageIcon";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Modal from "./RoleModal/Modal"
 import ReqSkills from "./MultiSelect/ReqSkills";
+import ComplementarySkills from "./MultiSelect/ComplementarySkills";
 
 
 import "../../StyleSheets/form.css";
@@ -26,7 +28,7 @@ function FormContainer() {
   const [show, setShow] = useState(false);
   const [skill, setSkill] = useState(false);
   const [compskill, setCompskill] = useState(false);
-
+const [location,setLocation]= useState(false);
 
   return (
     <div className="formContainer">
@@ -178,33 +180,48 @@ function FormContainer() {
               {/*====================Required Skills========================== */}
               <div className="roledesc req-skills">Required Skills (Select any 3)</div>
               <div>
-                <Button className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
+                <div className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
                   <WorkspacePremiumOutlinedIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
                   />
 
                   <div className="skills-text">Select Skills</div>
                   <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
-                </Button>
+                </div>  </div>
                 {skill ? <div>
                   <ReqSkills />
                 </div> : <div>
                 </div>}
-              </div>
+            
               {/*===========================Complementary Skills======================== */}
               <div className="roledesc req-skills">Complementary Skills (Select any 3)</div>
               <div className="Skills-select field_header" onClick={() => { setCompskill(compskill => !compskill) }}>
                 <StarBorderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
                 />
-                <input className="skills-text" />
+
+                <div className="skills-text">Select Skills</div>
                 <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
               </div>
+                {compskill ? <div>
+                  <ComplementarySkills />
+                </div> : <div>
+                </div>}
+           
               {/*===========================Minimum hours========================= */}
-              <div className="roledesc req-skills">Minimum Hours Per Week</div>
+              <div className="roledesc req-skills minHours">Minimum Hours Per Week</div>
               <div className="Skills-select " >
                 <QueryBuilderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
                 />
-                <input type="number" disablePortal />
+                <input placeholder="No. of hours" type="number" style={{width:"100%" ,margin:"3px"}} />
               </div>
+
+               {/*===========================Location Preferences========================= */}
+               <div className="roledesc req-skills minHours">Location Preferences</div>
+               <div className="Skills-select field_header" onClick={() => { setLocation(location => !location) }}>
+                 <LocationOnIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+                 />
+                 <div className="skills-text">Select Location</div>
+                <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+               </div>
             </Modal></form>
           </div>
           <div id="role-error">
@@ -220,7 +237,8 @@ function FormContainer() {
     </div>
   );
 }
-const searchRoles = [];
-const languages = ['Swift', 'Java', 'Python', 'JavaScript', 'Reactjs'];
+const searchRoles = ["iOS Developer","Android Developer","Full Stack Developer","Back-end Developer",
+"Front-end Developer"];
+
 export default FormContainer;
 

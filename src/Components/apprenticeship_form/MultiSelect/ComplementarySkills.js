@@ -133,9 +133,10 @@ export default function ReqSkills({ toss }) {
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const searchSkills = [
-  { title: "Swift" },
-  { title: "Java" },
-  { title: "Python" },
-  { title: "JavaScript" },
-  { title: "Reactjs" },
-];
+    { title: "Objective-C" },
+    { title: "Java" },
+    { title: "Python" },
+    { title: "JavaScript" },
+    { title: "Reactjs" },
+    { title: "ARM"},
+  ];

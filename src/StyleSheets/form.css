@@ -247,3 +247,17 @@
     color: #1E1E1E;
     opacity: 0.3;
 }
+
+/*===================Minimum Hours======================*/
+
+.minHours input[type='number']::-webkit-inner-spin-button, 
+.minHours input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;    
+    appearance: none;
+    margin: 0;  
+}
+.minHours input[type='number'], 
+.minHours input[type='number']:hover,
+.minHours input[type='number']:focus {
+  -moz-appearance: textfield;
+}
