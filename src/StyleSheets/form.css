@@ -49,7 +49,7 @@
     font-size: 1rem;
 }
 
-.form_progress_indicator .indicator > input {}
+.form_progress_indicator .indicator>input {}
 
 .form {
     width: 53.5%;
@@ -61,6 +61,12 @@
     color: var(--color_dark);
     opacity: 0.3;
 }
+
+.title_field {
+    font-size: 1.125rem;
+    flex-grow: 1;
+}
+
 
 .field_container {
     display: flex;
@@ -86,49 +92,81 @@
     align-items: center;
 }
 
-#logo_and_title_field .form_field .logo_field {
-    position: relative;
-    height: 5rem;
-    width: 5rem;
-    background-color: var(--color_gray_50);
-    border-radius: 1.25rem;
-}
-
-.logo_field #image_icon {
-    position: absolute;
-    top: 3.8125rem;
-    left: 3.8125rem;
-}
 
 #logo_and_title_field .form_field .title_field {
     font-size: 1.5rem;
     flex-grow: 1;
 }
 
-#company_description_field .form_field .title_field {
-    font-size: 1.125rem;
+
+#introduction_field .form_field>label {
+    padding: 1.5rem 1.25rem;
+    font-size: 0.875rem;
+    color: #778188;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
     flex-grow: 1;
+    cursor: pointer;
 }
+
+#introduction_field .form_field {
+    border-radius: 0.5rem;
+    border: 1px dashed #B2B6BC;
+    background-color: var(--color_gray_10);
+    justify-content: center;
+}
+
+
+#introduction_field .form_field>input {
+    display: none;
+}
+
+
+
+
+/*=============Team Types=================*/
+#team_type_field .form_field {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14.375rem, 1fr));
+    gap: 1rem;
+}
+
+.team_type_container {
+    border-radius: 1.25rem;
+    padding: 1rem 0.75rem;
+    border: 1px solid #cfd3d9;
+}
+
+.team_type_container .team_type_title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.team_type_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
 
 /*=============Team member roles=================*/
 
 .field_role {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: flex-start; */
-    display: grid;
-    grid-template-columns: 0.6fr 1fr 2fr;
-    background-color: white;
-    gap: 1rem;
-    border-radius: 1.5rem;
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 500;
-    line-height: 15px;
-    letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
     /* padding: 1.5rem; */
 }
+
 .add_member .addTeam {
     display: flex;
     flex-direction: row;
@@ -144,10 +182,12 @@
     /* Purple */
     border: 1px dashed #793EF5;
     border-radius: 8px;
+    justify-content: center;
+    align-items: center;
 }
+
 .add_member div {
-    align-self: center;
-    margin-right: 1rem;
+    /* align-self: center; */
 }
 
 #role-error {
@@ -155,18 +195,20 @@
     justify-content: flex-end;
     align-self: flex-end;
 }
+
 /*===============Role Form===================*/
 /*Role Search*/
 .roleSearch {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 0 12px 20px 2px;
+    margin: 0 12px 0px 2px;
     /* padding: 12px 12px 12px 16px; */
     width: 100%;
     height: 48px;
     background: #FFFFFF;
 }
+
 .roleSearch ::placeholder {
     width: auto;
     height: 24px;
@@ -181,7 +223,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 20px 0 12px;
+    margin: 5px 0 4px;
     font-size: 16px;
     line-height: 24px;
     color: #1E1E1E;
@@ -191,9 +233,8 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 12px 12px 20px 16px;
-    gap: 10px;
-    width: 552px;
+    padding: 12px 12px 20px 12px;
+    width: 99%;
     min-height: 195px;
     /* Snow */
     background: #FFFFFF;
@@ -204,8 +245,9 @@
 
 .role-field textarea {
     position: absolute;
-    width: 100%;
-    height: max-content;
+    width: 89%;
+   margin-right: 10px;
+    min-height: 170px;
     order: none;
     overflow: auto;
     outline: none;
@@ -217,15 +259,19 @@
     border: none;
 }
 
+
+
+
 /*Required skills*/
 .req-skills {
     width: max-content;
 }
+
 /*Skills selection*/
 
 .Skills-select {
     position: relative;
-    width: 552px;
+    width: 100%;
     height: 48px;
     display: flex;
     flex-direction: row;
@@ -234,6 +280,7 @@
     border: 1px solid #793EF5;
     border-radius: 12px;
 }
+
 .skills-text {
     display: flex;
     flex-direction: row;
@@ -243,21 +290,136 @@
     line-height: 24px;
     /* identical to box height, or 150% */
     letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
+    font-feature-settings: 'liga'off;
     color: #1E1E1E;
     opacity: 0.3;
 }
 
-/*===================Minimum Hours======================*/
 
-.minHours input[type='number']::-webkit-inner-spin-button, 
-.minHours input[type='number']::-webkit-outer-spin-button { 
-    -webkit-appearance: none;    
-    appearance: none;
-    margin: 0;  
+
+/******** Team Admin ********/
+
+#admin_field .form_field {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22.0625rem, 1fr));
+    gap: 1rem;
+
 }
-.minHours input[type='number'], 
-.minHours input[type='number']:hover,
-.minHours input[type='number']:focus {
-  -moz-appearance: textfield;
+
+
+.team_admin_container {
+    /* width: 22.0625rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0.75rem;
+    border: 1px solid #CFD3D9;
+    border-radius: 1rem;
+}
+
+.team_admin_container .sub_container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.team_admin_container .sub_container .box {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: var(--color_gray_50);
+    border-radius: 0.5rem;
+}
+
+
+
+
+
+/* Add Admin */
+
+.usernameBox,
+.urlBox {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--color_field_stroke);
+    border-radius: 1rem;
+    background-color: var(--color_secondary);
+}
+
+.usernameBox>input::placeholder,
+.urlBox>input::placeholder {
+    opacity: 0.5;
+    color: var(--color_dark);
+    font-weight: 600;
+}
+
+
+#admin_field .logo_field {
+    align-self: flex-start;
+}
+
+
+#admin_field .emailBox,
+#admin_field .usernameBox,
+#admin_field .urlBox {
+    background-color: white;
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+
+#admin_field .modal_form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+
+
+/* _______ Timeline Field ________ */
+#timeline_field .form_field {
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#timeline_field .form_field>* {
+    flex-grow: 1;
+}
+
+
+#timeline_field .form_field>div>* {
+    width: 100%;
+}
+
+
+
+
+
+
+
+/* ______ Common Classes ______ */
+.header_content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo_field {
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    background-color: var(--color_gray_50);
+    border-radius: 1.25rem;
+}
+
+.logo_field #image_icon {
+    position: absolute;
+    top: 3.8125rem;
+    left: 3.8125rem;
 }

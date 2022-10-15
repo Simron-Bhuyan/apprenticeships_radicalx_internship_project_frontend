@@ -5,6 +5,7 @@
   --color_light_purple: #665fef29;
   --color_gray_50: #e2e6eb;
   --color_gray_3: #828282;
+  --color_gray_10: #F1F4F8;
   --color_blue: #2153ff;
   --color_dark: #1e1e1e;
 }
@@ -12,6 +13,7 @@
 .App {
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 .App-logo {
@@ -44,6 +46,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

@@ -1,7 +1,7 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   padding: 0;
   margin: 0;
 }
@@ -16,17 +16,28 @@ body {
   background-color: #f1f4f8;
 }
 
-html{
-margin: 0;
-padding: 0;
+html {
+  margin: 0;
+  padding: 0;
 }
 
-input {
+input,
+textarea {
   font-family: "Space Grotesk", sans-serif;
   border: none;
   outline: none;
   /* background: none; */
 }
+
+textarea {
+  resize: none;
+  text-align: justify;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

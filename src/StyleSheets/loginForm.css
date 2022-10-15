@@ -56,26 +56,39 @@
 .passwordBox {
   display: flex;
   align-items: center;
-  background-color: var(--color_secondary);
   padding: 0.625rem 1rem;
   border: 1px solid var(--color_field_stroke);
   border-radius: 1rem;
-}
-
-.emailBox > input,
-.passwordBox > input {
-  flex-grow: 1;
-}
-
-.passwordBox {
-
-}
-
-.emailBox > input,
-.passwordBox > input {
-  border: none;
   background-color: var(--color_secondary);
+}
+
+.subContainer2 .form .emailBox,
+.subContainer2 .form .passwordBox {}
+
+.emailBox>input,
+.passwordBox>input {
+  flex-grow: 1;
+  color: #8A8B8C;
+}
+
+
+.emailBox>input::placeholder,
+.passwordBox>input::placeholder {
+  opacity: 0.5;
+  color: var(--color_dark);
+  font-weight: 600;
+}
+
+.emailBox>input,
+.passwordBox>input {
+  border: none;
   outline: none;
+}
+
+
+.subContainer2 .form .emailBox,
+.subContainer2 .form .passwordBox {
+  background-color: var(--color_secondary);
 }
 
 .forgotPassword .rememberMe,
@@ -85,7 +98,7 @@
 }
 
 .forgotPassword .rememberMe {
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .forgotPassword {

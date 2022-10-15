@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import radicalx_icon from "../../assests/images/radicalx_logo.png";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import InputAdornment from '@mui/material/InputAdornment';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import Input from '@mui/material/Input';
-
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import InputAdornment from "@mui/material/InputAdornment";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Input from "@mui/material/Input";
 
 function LoginForm() {
   /*Email */
@@ -35,37 +34,63 @@ function LoginForm() {
       <div className="logo">
         <img src={radicalx_icon} alt="" />
       </div>
-      <div className="form">
+      <form className="form">
         <div className="title">Login</div>
-        <Input disableUnderline 
-        className="emailBox" 
-        placeholder="Email"
-        type="email"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-        startAdornment={
-            <EmailOutlinedIcon position="start" style={{ color: "#8A8B8C", marginRight: "9px" }} />
+        <Input
+          disableUnderline
+          className="emailBox"
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          startAdornment={
+            <EmailOutlinedIcon
+              position="start"
+              style={{ color: "#8A8B8C", marginRight: "9px" }}
+            />
           }
+          inputProps={{
+            style: {
+              fontFamily: "Space Grotesk,sans-serif",
+            },
+          }}
         />
-        <Input disableUnderline 
-        className="passwordBox"
-        placeholder="Password"
-        type={values.showPassword ? "text" : "password"}
-        onChange={handlePasswordChange("password")}
-        value={values.password}
-        startAdornment={
-            <LockOutlinedIcon position="start" style={{ color: "#8A8B8C", marginRight: "9px" }} />
+        <Input
+          disableUnderline
+          className="passwordBox"
+          placeholder="Password"
+          type={values.showPassword ? "text" : "password"}
+          onChange={handlePasswordChange("password")}
+          value={values.password}
+          startAdornment={
+            <LockOutlinedIcon
+              position="start"
+              style={{ color: "#8A8B8C", marginRight: "9px" }}
+            />
           }
-        endAdornment={
+          endAdornment={
             <InputAdornment position="end">
               <div
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
               >
-                {values.showPassword ? <VisibilityIcon style={{ color: "#8A8B8C", cursor: "pointer" }} /> : <VisibilityOffIcon style={{ color: "#8A8B8C", cursor: "pointer" }} />}
+                {values.showPassword ? (
+                  <VisibilityIcon
+                    style={{ color: "#8A8B8C", cursor: "pointer" }}
+                  />
+                ) : (
+                  <VisibilityOffIcon
+                    style={{ color: "#8A8B8C", cursor: "pointer" }}
+                  />
+                )}
               </div>
             </InputAdornment>
           }
+          inputProps={{
+            style: {
+              fontFamily: "Space Grotesk,sans-serif",
+            },
+          }}
         />
 
         <div className="forgotPassword">
@@ -77,7 +102,7 @@ function LoginForm() {
         </div>
 
         <input className="loginBtn" type="submit" value="Login"></input>
-      </div>
+      </form>
     </div>
   );
 }

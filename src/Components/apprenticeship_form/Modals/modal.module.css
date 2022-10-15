@@ -1,0 +1,113 @@
+.modalWrapper {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    margin-right: 0;
+    inset: 0;
+    background: #0000005e;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    padding-block: 1.5rem;
+    z-index: 500;
+}
+
+.modalWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.modal {
+    width: 41.875rem;
+    height: auto;
+    padding: 24px;
+    background: white;
+    border-radius: 1.5rem;
+    display: grid;
+    grid-template-rows: auto auto;
+    position: relative;
+    animation: fadeInDown 0.8s;
+    margin: auto auto !important;
+}
+
+.modalhead {
+    width: 670px;
+    display: grid;
+    grid-template-columns: 5fr 1fr 0.5fr;
+    top: 0;
+
+    /* margin-bottom:26px; */
+    position: absolute;
+}
+
+#modalHeader {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 30px;
+    padding-top: 24px;
+    /* identical to box height, or 120% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga'off;
+    color: #1E1E1E;
+}
+
+.modalbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 4rem;
+    height: max-content;
+    background: #ffffff00;
+    gap: 1.5rem;
+
+}
+
+
+.btnClose {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: 30px;
+    right: 24px;
+    opacity: 1;
+}
+
+#btnrole {
+    position: absolute;
+    width: 82px;
+    margin: 24px 24px 0 0;
+    height: 36px;
+    background: #793EF5;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    text-align: center;
+    letter-spacing: 0.4px;
+    /* font-feature-settings: 'liga'off; */
+    color: #FFFFFF;
+    text-transform: none;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

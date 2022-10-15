@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "mblode.pretty-formatter"
+  },
+
+  "editor.tabCompletion": "on",
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+
+  "emmet.triggerExpansionOnTab": true
+}
