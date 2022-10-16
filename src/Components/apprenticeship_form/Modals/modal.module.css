@@ -9,7 +9,6 @@
     background: #0000005e;
     justify-content: center;
     align-items: center;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     padding-block: 1.5rem;
@@ -36,7 +35,7 @@
 .modalhead {
     width: 670px;
     display: grid;
-    grid-template-columns: 5fr 1fr 0.5fr;
+    grid-template-columns: 5fr 0.2fr 0.5fr;
     top: 0;
 
     /* margin-bottom:26px; */
@@ -51,11 +50,9 @@
     line-height: 24px;
     padding-left: 30px;
     padding-top: 24px;
-    /* identical to box height, or 120% */
     display: flex;
     align-items: center;
     letter-spacing: 0.3px;
-    font-feature-settings: 'liga'off;
     color: #1E1E1E;
 }
 
@@ -72,7 +69,9 @@
 
 
 .btnClose {
-    position: absolute;
+    position: relative;
+    display: flex;
+    align-self: end;
     height: 24px;
     width: 24px;
     top: 30px;
@@ -81,7 +80,7 @@
 }
 
 #btnrole {
-    position: absolute;
+    position: relative;
     width: 82px;
     margin: 24px 24px 0 0;
     height: 36px;
@@ -111,3 +110,16 @@
         transform: translateY(0);
     }
 }
+
+@media only screen and (max-width: 646px) {
+    .modalhead {
+        width: 670px;
+        display: grid;
+        grid-template-columns: 5fr 1fr 1.3fr;
+        top: 0;
+        position: absolute;
+    }
+    textarea{
+        padding-right: 6px;
+    }
+    }

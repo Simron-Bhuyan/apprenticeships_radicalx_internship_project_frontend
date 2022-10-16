@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Button from "@mui/material/Button";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
@@ -19,7 +20,12 @@ import Modal from "./Modals/Modal";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
 import ReqSkills from "./MultiSelect/ReqSkills";
-import { body } from "../../index_DOM_Fetcher.js";
+import Location from "./Location/Location"
+import {
+  body,
+  filenameDisplayer,
+  elementToAppend,
+} from "../../index_DOM_Fetcher.js";
 import TeamType from "./TeamType";
 import TeamAdmin from "./TeamAdmin";
 import DateFnsUtils from "@date-io/date-fns";
@@ -31,10 +37,11 @@ import {
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import Input from "@mui/material/Input";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import "../../StyleSheets/form.css";
 import LinkIcon from "./icons/LinkIcon";
 import ComplementarySkills from "./MultiSelect/ComplementarySkills";
-import { color, style } from "@mui/system";
+
 
 function FormContainer() {
   const [showRoleModal, setShowRoleModal] = useState(false);
@@ -42,9 +49,8 @@ function FormContainer() {
   const [skill, setSkill] = useState(false);
   const [compskill, setCompskill] = useState(false);
   const [selectedDate, handleDateChange] = useState(null);
-
   const [email, setEmail] = useState("");
-
+  const fileInputRef = useRef(null);
   const freezeBody = () => {
     body.style.overflow = "hidden";
   };
@@ -55,7 +61,19 @@ function FormContainer() {
 
     event.currentTarget.style.height = `${scrollHeight}px`;
   };
+  const videoFileFieldHandler = (event) => {
+    console.log(fileInputRef);
+    let filename = event.target.files[0].name;
+    elementToAppend.innerHTML = filename;
+    filenameDisplayer.prepend(elementToAppend);
+    filenameDisplayer.classList.remove("display_none");
+  };
 
+  const deleteFileName = (event) => {
+    filenameDisplayer.classList.add("display_none");
+    fileInputRef.current.value = "";
+    console.log(fileInputRef);
+  };
   return (
     <div className="formContainer">
       {/* Form Header  */}
@@ -165,11 +183,20 @@ function FormContainer() {
               <UploadFileRoundedIcon style={{ fontSize: 20 }} />
             </label>
             <input
+            ref={fileInputRef}
               className="file_field"
               type="file"
               name="video_file"
               id="video_file"
               accept="video/*"
+              onChange={videoFileFieldHandler}
+              />
+            </div>
+  
+            <div id="filenameDisplayer" className="display_none">
+              <CloseRoundedIcon
+                onClick={deleteFileName}
+                style={{ color: "#793EF5", cursor: "pointer" }}
             />
           </div>
         </div>
@@ -272,78 +299,51 @@ function FormContainer() {
                       />
                     </div>
 
-{/*====================Required Skills========================== */}
-                    <div className="roledesc req-skills">
-                      Required Skills (Select any 3)
-                    </div>
-                    <div>
-                      <Button
-                        className="Skills-select field_header"
-                        onClick={() => {
-                          setSkill((skill) => !skill);
-                        }}
-                      >
-                        <WorkspacePremiumOutlinedIcon
-                          style={{
-                            display: "flex",
-                            width: "28px",
-                            flexDirection: "row",
-                            color: "#793EF5",
-                            alignSelf: "flex-start",
-                            margin: "0.5rem",
-                          }}
-                        />
+        {/*====================Required Skills========================== */}
+        <div className="roledesc req-skills">Required Skills (Select any 3)</div>
+        <div>
+          <div className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
+            <WorkspacePremiumOutlinedIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+            />
 
-                        <div className="skills-text">Select Skills</div>
-                        <ArrowDropDownIcon
-                          style={{
-                            display: "flex",
-                            width: "28px",
-                            flexDirection: "row",
-                            color: "#793EF5",
-                            alignSelf: "flex-end",
-                            margin: "0.5rem",
-                          }}
-                        />
-                      </Button>
-                      {skill ? (
-                        <div>
-                          <ReqSkills />
-                        </div>
-                      ) : (
-                        <div></div>
-                      )}
-                    </div>
-{/*==================Complementary Skills================== */}
-<div className="roledesc req-skills">Complementary Skills (Select any 3)</div>
-<div className="Skills-select field_header" onClick={() => { setCompskill(compskill => !compskill) }}>
-  <StarBorderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
-  />
+            <div className="skills-text">Select Skills</div>
+            <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+          </div>  </div>
+          {skill ? <div>
+            <ReqSkills />
+          </div> : <div>
+          </div>}
 
-  <div className="skills-text">Select Skills</div>
-  <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
-</div>
-  {compskill ? <div>
-    <ComplementarySkills />
-  </div> : <div>
-  </div>}
-{/*===========================Minimum hours========================= */}
-                    <div className="roledesc req-skills">
-                      Minimum Hours Per Week
-                    </div>
-                    <div className="Skills-select ">
-                      <QueryBuilderIcon
-                        style={{
-                          display: "flex",
-                          width: "28px",
-                          flexDirection: "row",
-                          color: "#793EF5",
-                          alignSelf: "flex-start",
-                          margin: "0.5rem",
-                        }}
-                      />
-                      <input type="number" disablePortal />
-                    </div>
+        {/*===========================Complementary Skills======================== */}
+        <div className="roledesc req-skills">Complementary Skills (Select any 3)</div>
+        <div className="Skills-select field_header" onClick={() => { setCompskill(compskill => !compskill) }}>
+          <StarBorderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+          />
+
+          <div className="skills-text">Select Skills</div>
+          <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+        </div>
+          {compskill ? <div>
+            <ComplementarySkills />
+          </div> : <div>
+          </div>}
+
+        {/*===========================Minimum hours========================= */}
+        <div className="roledesc req-skills minHours">Minimum Hours Per Week</div>
+        <div className="Skills-select " >
+          <QueryBuilderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+          />
+          <input placeholder="No. of hours" type="number" style={{width:"100%" ,margin:"3px"}} />
+        </div>
+
+         {/*==============Location Preferences============== */}
+         <div className="roledesc req-skills minHours">Location Preferences</div>
+         <div className="Skills-select field_header" >
+           <LocationOnIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
+           />
+           <div className="skills-text"><Location /></div>
+          <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
+         </div>
                   </Modal>
                 </form>
               </div>

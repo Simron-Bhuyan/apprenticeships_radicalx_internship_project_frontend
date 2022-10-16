@@ -1,9 +1,11 @@
 let body = null;
-let textareas = null;
+let filenameDisplayer = null;
+let elementToAppend = null;
 
 window.onload = () => {
   body = document.body;
-  textareas = document.getElementsByTagName("textarea");
+  filenameDisplayer = document.getElementById("filenameDisplayer");
+  elementToAppend = document.createElement("div");
 };
 
-export { body, textareas };
+export { body, filenameDisplayer, elementToAppend };

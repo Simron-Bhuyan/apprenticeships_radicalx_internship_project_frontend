@@ -26,7 +26,7 @@ const unfreezeBody = () => {
           }
       }
          style={{ cursor: 'pointer' }}
-         onClick={onClose} className={`${styles.btnClose} btn-close`} /></div>
+          className={`${styles.btnClose} btn-close`} /></div>
         </div>
         <div className={styles.modalbody}>{children}</div>
       </div>
