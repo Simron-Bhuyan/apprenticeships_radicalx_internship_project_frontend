@@ -10,7 +10,6 @@
     "@material-ui/pickers": "^3.3.10",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
-    "@syncfusion/ej2-react-dropdowns": "^20.3.49",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
