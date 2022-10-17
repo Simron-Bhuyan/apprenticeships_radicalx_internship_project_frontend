@@ -1,6 +1,7 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import Button from "@mui/material/Button";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import Location from "./Location/Location"
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
@@ -18,9 +19,10 @@ import UploadFileRoundedIcon from "@mui/icons-material/UploadFileRounded";
 import ImageIcon from "./icons/ImageIcon";
 import Modal from "./Modals/Modal";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
+import { InputAdornment } from "@mui/material";
 import ReqSkills from "./MultiSelect/ReqSkills";
-import Location from "./Location/Location"
 import {
   body,
   filenameDisplayer,
@@ -37,11 +39,9 @@ import {
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import Input from "@mui/material/Input";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import "../../StyleSheets/form.css";
 import LinkIcon from "./icons/LinkIcon";
-import ComplementarySkills from "./MultiSelect/ComplementarySkills";
-
+import { color, style } from "@mui/system";
 
 function FormContainer() {
   const [showRoleModal, setShowRoleModal] = useState(false);
@@ -49,8 +49,10 @@ function FormContainer() {
   const [skill, setSkill] = useState(false);
   const [compskill, setCompskill] = useState(false);
   const [selectedDate, handleDateChange] = useState(null);
+
   const [email, setEmail] = useState("");
   const fileInputRef = useRef(null);
+
   const freezeBody = () => {
     body.style.overflow = "hidden";
   };
@@ -61,6 +63,7 @@ function FormContainer() {
 
     event.currentTarget.style.height = `${scrollHeight}px`;
   };
+
   const videoFileFieldHandler = (event) => {
     console.log(fileInputRef);
     let filename = event.target.files[0].name;
@@ -74,6 +77,7 @@ function FormContainer() {
     fileInputRef.current.value = "";
     console.log(fileInputRef);
   };
+
   return (
     <div className="formContainer">
       {/* Form Header  */}
@@ -183,20 +187,20 @@ function FormContainer() {
               <UploadFileRoundedIcon style={{ fontSize: 20 }} />
             </label>
             <input
-            ref={fileInputRef}
+              ref={fileInputRef}
               className="file_field"
               type="file"
               name="video_file"
               id="video_file"
               accept="video/*"
               onChange={videoFileFieldHandler}
-              />
-            </div>
-  
-            <div id="filenameDisplayer" className="display_none">
-              <CloseRoundedIcon
-                onClick={deleteFileName}
-                style={{ color: "#793EF5", cursor: "pointer" }}
+            />
+          </div>
+
+          <div id="filenameDisplayer" className="display_none">
+            <CloseRoundedIcon
+              onClick={deleteFileName}
+              style={{ color: "#793EF5", cursor: "pointer" }}
             />
           </div>
         </div>
@@ -235,43 +239,29 @@ function FormContainer() {
                     Add Team Member
                   </div>
                 </button>
-                <form >
+                <form>
                   <Modal
                     form_title="Add Role"
                     show={showRoleModal}
                     onClose={() => setShowRoleModal(false)}
                   >
                     <div className="roleSearch">
-                      <PermIdentityIcon
-                        style={{
-                          position: "relative",
-                          width: "26px",
-                          height: "26px",
-                          color: "#793EF5",
-                          margin: "6px 0 6px 10px",
-                          display: "flex",
-                          flexDirection: "row",
-                          alignSelf: "flex-start",
-                        }}
-                      />
                       <Autocomplete
                         disablePortal
                         id="combo-box-demo"
                         sx={{
                           " &.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                            border: "none",
+                            // border: "none",
                           },
                         }}
                         style={{
-                          width: "92%",
-                          height: "48px",
-                          background: "none",
-                          position: "absolute",
-                          
+                          flexGrow: 1,
+                          borderRadius: "0.75rem !important",
                         }}
                         options={searchRoles}
                         renderInput={(params) => (
                           <TextField
+                            {...params}
                             fullWidth
                             style={{
                               borderColor: "transparent",
@@ -279,64 +269,133 @@ function FormContainer() {
                               border: "1px solid #665FEF",
                               borderRadius: "12px",
                               alignSelf: "stretch",
-                              position: "absolute",
+                              border: "none",
                               caretColor: "transparent",
-                              paddingLeft: "45px",
                             }}
                             placeholder="Select Role"
-                            {...params}
-                            label=""
+                            InputProps={{
+                              ...params.InputProps,
+                              startAdornment: (
+                                <InputAdornment position="start">
+                                  <PermIdentityIcon
+                                    style={{
+                                      position: "relative",
+                                      width: "26px",
+                                      height: "26px",
+                                      color: "#793EF5",
+                                    }}
+                                  />
+                                </InputAdornment>
+                              ),
+                            }}
                           />
                         )}
                       />
                     </div>
-{/*==================Role Description===================== */}
+                    {/*===========================Role Description================================ */}
                     <div className="roledesc">Role Description</div>
                     <div className="form_field role-field">
                       <textarea
-                        type="text"
-                        placeholder="Describe the responsibilities"
+                        placeholder="Description..."
+                        onKeyUp={textareaHeightHandler}
                       />
                     </div>
+                    {/*====================Required Skills========================== */}
+                    <div className="roledesc req-skills">
+                      Required Skills (Select any 3)
+                    </div>
+                    <div>
+                      <Button
+                        className="Skills-select field_header"
+                        onClick={() => {
+                          setSkill((skill) => !skill);
+                        }}
+                      >
+                        <WorkspacePremiumOutlinedIcon
+                          style={{
+                            display: "flex",
+                            width: "28px",
+                            flexDirection: "row",
+                            color: "#793EF5",
+                            margin: "0.5rem",
+                          }}
+                        />
 
-        {/*====================Required Skills========================== */}
-        <div className="roledesc req-skills">Required Skills (Select any 3)</div>
-        <div>
-          <div className="Skills-select field_header" onClick={() => { setSkill(skill => !skill) }}>
-            <WorkspacePremiumOutlinedIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
-            />
+                        <div className="skills-text">Select Skills</div>
+                        <ArrowDropDownIcon
+                          style={{
+                            display: "flex",
+                            width: "28px",
+                            flexDirection: "row",
+                            color: "#793EF5",
+                            margin: "0.5rem",
+                          }}
+                        />
+                      </Button>
+                      {skill ? (
+                        <div>
+                          <ReqSkills selectOptions={requiredSkills} />
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                    {/*===========================Complementary Skills======================== */}
+                    <div className="roledesc req-skills">
+                      Complementary Skills (Select any 3)
+                    </div>
 
-            <div className="skills-text">Select Skills</div>
-            <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
-          </div>  </div>
-          {skill ? <div>
-            <ReqSkills />
-          </div> : <div>
-          </div>}
+                    <div>
+                      <Button
+                        className="Skills-select field_header"
+                        onClick={() => {
+                          setCompskill((compskill) => !compskill);
+                        }}
+                      >
+                        <StarBorderIcon
+                          style={{
+                            display: "flex",
+                            width: "28px",
+                            flexDirection: "row",
+                            color: "#793EF5",
+                            margin: "0.5rem",
+                          }}
+                        />
 
-        {/*===========================Complementary Skills======================== */}
-        <div className="roledesc req-skills">Complementary Skills (Select any 3)</div>
-        <div className="Skills-select field_header" onClick={() => { setCompskill(compskill => !compskill) }}>
-          <StarBorderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
-          />
-
-          <div className="skills-text">Select Skills</div>
-          <ArrowDropDownIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-end", margin: "0.5rem" }} />
-        </div>
-          {compskill ? <div>
-            <ComplementarySkills />
-          </div> : <div>
-          </div>}
-
-        {/*===========================Minimum hours========================= */}
-        <div className="roledesc req-skills minHours">Minimum Hours Per Week</div>
-        <div className="Skills-select " >
-          <QueryBuilderIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
-          />
-          <input placeholder="No. of hours" type="number" style={{width:"100%" ,margin:"3px"}} />
-        </div>
-
-         {/*==============Location Preferences============== */}
+                        <div className="skills-text">Select Skills</div>
+                        <ArrowDropDownIcon
+                          style={{
+                            display: "flex",
+                            width: "28px",
+                            flexDirection: "row",
+                            color: "#793EF5",
+                            margin: "0.5rem",
+                          }}
+                        />
+                      </Button>
+                      {compskill ? (
+                        <div>
+                          <ReqSkills selectOptions={complimentarySkills} />
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                    {/*===========================Minimum hours========================= */}
+                    <div className="">Minimum Hours Per Week</div>
+                    <div className="Skills-select ">
+                      <QueryBuilderIcon
+                        style={{
+                          display: "flex",
+                          width: "28px",
+                          flexDirection: "row",
+                          color: "#793EF5",
+                          margin: "0.5rem",
+                        }}
+                      />
+                      <input type="number" disablePortal />
+                    </div>
+                   {/*==============Location Preferences============== */}
          <div className="roledesc req-skills minHours">Location Preferences</div>
          <div className="Skills-select field_header" >
            <LocationOnIcon style={{ display: "flex", width: "28px", flexDirection: "row", color: "#793EF5", alignSelf: "flex-start", margin: "0.5rem" }}
@@ -528,6 +587,24 @@ function FormContainer() {
     </div>
   );
 }
-const searchRoles = ["ios Developer","Backend Developer","Frontend Developer","Android Developer","Full Stack Developer"];
+const searchRoles = [
+  { title: "iOS Developer" },
+  { title: "Android Developer" },
+  { title: "Full Stack Developer" },
+  { title: "Back-end Developer" },
+  { title: "Front-end Developer" },
+];
+const requiredSkills = [
+  { title: "Java" },
+  { title: "Python" },
+  { title: "React" },
+  { title: "Swift" },
+  { title: "NodeJS" },
+];
+const complimentarySkills = [
+  { title: "Objective C" },
+  { title: "ARM" },
+  { title: "Redux" },
+];
 const languages = ["Swift", "Java", "Python", "JavaScript", "Reactjs"];
 export default FormContainer;

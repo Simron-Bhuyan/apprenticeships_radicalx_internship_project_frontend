@@ -8,20 +8,23 @@ import {
   Autocomplete,
   Divider,
   ClickAwayListener,
-  AutocompleteCloseReason
+  AutocompleteCloseReason,
+  FormControlLabel,
 } from "@mui/material";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 const PopperStyledComponent = styled(Popper)(({ theme }) => ({
-  border: `1px solid ${theme.palette.mode === "light" ? "rgba(149, 157, 165, 0.2)" : "rgb(1, 4, 9)"
-    }`
+  border: `1px solid ${
+    theme.palette.mode === "light" ? "rgba(149, 157, 165, 0.2)" : "rgb(1, 4, 9)"
+  }`,
 }));
 
-export default function ReqSkills({ toss }) {
+export default function ReqSkills({ selectOptions }) {
   const [value, setValue] = React.useState([]);
   const [checkAll, setCheckAll] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -29,11 +32,15 @@ export default function ReqSkills({ toss }) {
   const checkAllChange = (event) => {
     setCheckAll(event.target.checked);
     if (event.target.checked) {
-      setValue(searchSkills);
+      setValue(selectOptions);
     } else {
       setValue([]);
     }
   };
+
+  React.useEffect(() => {
+    console.log("Open " + open);
+  }, [open]);
 
   const handleClickAway = (e) => {
     console.log("Handle Click Away");
@@ -42,13 +49,13 @@ export default function ReqSkills({ toss }) {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <Box >
+      <Box>
         <Autocomplete
           multiple
           disableCloseOnSelect
           limitTags={3}
           id="checkboxes-tags-demo"
-          options={searchSkills}
+          options={selectOptions}
           value={value}
           open={open}
           onChange={(event, newValue, reason) => {
@@ -64,9 +71,7 @@ export default function ReqSkills({ toss }) {
           }}
           onClose={(e, reason) => {
             console.log("On Close: ", reason);
-            if (reason === "escape") {
-              setOpen(false);
-            }
+            setOpen(false);
           }}
           onOpen={() => {
             setOpen(true);
@@ -78,20 +83,23 @@ export default function ReqSkills({ toss }) {
               <Box
                 sx={{
                   backgroundColor: "white",
-                  height: "45px",
                   textOverflow: "ellipsis",
                   overflow: "hidden",
                   whiteSpace: "nowrap",
+                  paddingInline: "1.6rem",
                 }}
               >
-                <Checkbox
-                  checked={checkAll}
-                  onChange={checkAllChange}
-                  id="check-all"
-                  sx={{ marginRight: "8px" }}
-                  onMouseDown={(e) => e.preventDefault()}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkAll}
+                      onChange={checkAllChange}
+                      id="check-all"
+                      onMouseDown={(e) => e.preventDefault()}
+                    />
+                  }
+                  label="Select All"
                 />
-                Select All
               </Box>
             </PopperStyledComponent>
           )}
@@ -108,22 +116,21 @@ export default function ReqSkills({ toss }) {
             </li>
           )}
           style={{
-            width: "90%", backgroundColor: "white",
+            width: "100%",
+            backgroundColor: "white",
             height: "auto",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
             display: "flex",
-            marginLeft: "10%",
             padding: "16px",
             position: "relative",
             background: "#FFFFFF",
             border: "1px solid #E2E6EB",
             boxShadow: "0px 24px 34px rgba(0, 0, 0, 0.12)",
-            borderRadius: "20px"
+            borderRadius: "20px",
           }}
           renderInput={(params) => (
-            <TextField
-              {...params} label="" placeholder="" />
+            <TextField {...params} label="" placeholder="" />
           )}
         />
       </Box>
@@ -132,10 +139,10 @@ export default function ReqSkills({ toss }) {
 }
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const searchSkills = [
-  { title: "Swift" },
-  { title: "Java" },
-  { title: "Python" },
-  { title: "JavaScript" },
-  { title: "Reactjs" },
-];
+// const selectOptions = [
+//   { title: "iOS Developer" },
+//   { title: "Android Developer" },
+//   { title: "Full Stack Developer" },
+//   { title: "Back-end Developer" },
+//   { title: "Front-end Developer" },
+// ];

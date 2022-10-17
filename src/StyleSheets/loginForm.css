@@ -62,8 +62,6 @@
   background-color: var(--color_secondary);
 }
 
-.subContainer2 .form .emailBox,
-.subContainer2 .form .passwordBox {}
 
 .emailBox>input,
 .passwordBox>input {
@@ -74,8 +72,6 @@
 
 .emailBox>input::placeholder,
 .passwordBox>input::placeholder {
-  opacity: 0.5;
-  color: var(--color_dark);
   font-weight: 600;
 }
 
